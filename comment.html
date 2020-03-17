@@ -3,7 +3,8 @@
     <head>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
       <title>Comments</title>
-      <link href="homestyles.css" rel="stylesheet" type="text/css" />
+      <!-- <link href="homestyles.css" rel="stylesheet" type="text/css" /> -->
+      <script src= "./scripts.js"></script>
     </head>
     <body>
       <header>
@@ -29,22 +30,27 @@
           <form>
             <div class="form-group">
               <label for="location">Location</label>
-              <input type="text" class="form-control" />
+              <input id ="myInput" type="text" class="form-control" required="required"/>
+              <p id="demo"></p>
+              <script>
+                myFunction(document.getElementById("myInput"))
+              </script>
               <label for="weather">Description of Weather</label>
-              <textarea class="form-control" id="textOnt" rows="2"></textarea>
+              <textarea class="form-control" id="textOnt" rows="2" required="required"></textarea>
               <label>First and Last Name</label>
               <div class="form-row">
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="First Name" />
+                  <input type="text" class="form-control" placeholder="First Name" required="required" />
                 </div>
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="Last Name" />
+                  <input type="text" class="form-control" placeholder="Last Name" required="required"/>
                 </div>
               </div>
               <label for="textInt">Comment</label>
-              <textarea class="form-control" id="textOnt" rows="4"></textarea>
+              <textarea class="form-control" id="textOnt" rows="4" required="required"></textarea>
             </div>
-            <button type="button" class="btn btn-primary">Submit</button>
+            <!-- <button type="button" class="btn btn-primary">Submit</button> -->
+            <input type="submit" onclick ="myFunction()">
           </form>
         </div>
       </section>
