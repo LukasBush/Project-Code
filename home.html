@@ -23,8 +23,8 @@
             </ul>
           </nav>
           <br>
-          <center><form autocomplete="off" action="/Scripts.js">
-            <div class="autocomplete" style="width:300px;">
+          <center><form autocomplete="off" position="relative" action="/Scripts.js">
+            <div class="autocomplete"  style="width:300px;">
               <input id="myInput" type="text" name="myCity" placeholder="United States City">
             </div>
             <input type="submit">
@@ -35,52 +35,122 @@
           </script>
         </div>
       </header>
+      <div class="container">
+      <div class="card-deck" id="5_day_forecast">
+
+      </div>
+    </div>
       <section>
         <br>
-        <div class = "container-fluid">
-          <div class="card-deck">
-            <div class="card">
-              <img class="card-img-top" src="sun.jpg" alt="Card image">
-              <div class="card-body">
-                <h5 class="card-title">Monday</h5>
-                <p class="card-text"></p>
-                <a href = "WTW.html" class = "btn btn-outline-info" role = "button" title = "TO WTW">TO WTW</a>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="sun.jpg" alt="Card image">
-              <div class="card-body">
-                <h5 class="card-title">Tuesday</h5>
-                <p class="card-text"></p>
-                <a href = "WTW.html" class = "btn btn-outline-info" role = "button" title = "TO WTW">TO WTW</a>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="sun.jpg" alt="Card image">
-              <div class="card-body">
-                <h5 class="card-title">Wednesday</h5>
-                <p class="card-text"></p>
-                <a href = "WTW.html" class = "btn btn-outline-info" role = "button" title = "TO WTW">TO WTW</a>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="sun.jpg" alt="Card image">
-              <div class="card-body">
-                <h5 class="card-title">Thursday</h5>
-                <p class="card-text"></p>
-                <a href = "WTW.html" class = "btn btn-outline-info" role = "button" title = "TO WTW">TO WTW</a>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="sun.jpg" alt="Card image">
-              <div class="card-body">
-                <h5 class="card-title">Friday</h5>
-                <p class="card-text"></p>
-                <a href = "WTW.html" class = "btn btn-outline-info" role = "button" title = "TO WTW">TO WTW</a>
-              </div>
-            </div>
-          </div>
+
+
+          <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script>
+          //helper functions
+          var dayOfWeek = "";
+          function formatDate(date, month, year)
+          {
+            month = (month.length < 2) ? ('0' + month) : month;
+            date = (date.length < 2)? ('0' + date) : date;
+            return [year,month,date].join('-');
+          }
+          function getDayofWeek(date, month, year){
+            var week_names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            dayOfWeek =  week_names[new Date([month,date,year].join('-')).getDay()];
+          }
+          function getFarenheitTemp(temp){
+            return (9*temp/5)+32;
+          }
+          $(document).ready(function() {
+            var url ='https://api.weatherstack.com/forecast?access_key=5bc82451636190abd9d7afe6fe9b20b5&query=Boulder&forecast_days=6&hourly=1&interval=24'; //Place your weatherstack API Call Here - access_key to be used: 5bc82451636190abd9d7afe6fe9b20b5
+                $.ajax({url:url, dataType:"jsonp"}).then(function(data) {
+                console.log(data);//Review all of the data returned
+                console.log("Current Temp: " + data.current.temperature);//View Today's Temp
+                var current_time = data.location.localtime;//Retrieve the current timestamp
+
+
+
+
+              /* Process the daily forecast for the next 5 days */
+              //helper function - to be used to get the key for each of the 5 days in the future when creating cards for forecasting weather
+              function getKey(i){
+                  var date =new Date();
+                  var d = date.getDate() + i;
+                  var m = date.getMonth() + 1;
+                  var y = date.getFullYear();
+                  var key_forecast = formatDate(d.toString(),m.toString(),y.toString()).toString();
+                  getDayofWeek(d,m,y);
+                  return data.forecast[key_forecast];
+              }
+
+              function imgKey(i){
+                var date =new Date();
+                var d = date.getDate() + i;
+                var m = date.getMonth() + 1;
+                var y = date.getFullYear();
+                var key_forecast = formatDate(d.toString(),m.toString(),y.toString()).toString();
+                getDayofWeek(d,m,y);
+                return data.current;
+              }
+
+
+
+              for(var i = 0; i < 5; i++) {
+
+
+
+                                  var divcard = document.createElement("div");
+                                  divcard.setAttribute("class", "card");
+
+
+                                  var divbody = document.createElement("div");
+                                  divbody.setAttribute("class", "card-body");
+
+                                  getKey(i);
+                                  var title = document.createElement("h5");
+                                  title.setAttribute("class", "card-title");
+                                  title.innerHTML = dayOfWeek;
+
+                                  var pic = document.createElement("img");
+                                  pic.setAttribute('class', 'img-fluid');
+                                  pic.src = getKey(i).hourly[0].weather_icons;
+
+                                  var max = document.createElement("p");
+                                  var temp = getFarenheitTemp(getKey(i).maxtemp);
+                                  max.innerHTML = "High: " + temp;
+                                  max.setAttribute('class', 'card-text');
+
+                                  var min = document.createElement("p");
+                                  var mintemp = getFarenheitTemp(getKey(i).mintemp);
+                                  min.innerHTML = "Low: " + mintemp;
+                                  min.setAttribute('class', 'card-text');
+
+                                  var nextPage = document.createElement("button");
+                                  nextPage.innerHTML = "TO WTW";
+                                  nextPage.setAttribute('class', 'btn btn-outline-info');
+                                  nextPage.onclick = function(){
+                                    window.location = "WTW.html";
+                                  }
+
+
+                                  divbody.appendChild(title);
+                                  divbody.appendChild(pic);
+                                  divbody.appendChild(max);
+                                  divbody.appendChild(min);
+                                  divcard.appendChild(divbody);
+                                  divcard.appendChild(nextPage);
+                                  document.getElementById('5_day_forecast').appendChild(divcard);
+
+                              }
+                            })
+                      		})
+                       	</script>
         </div>
       </section>
+
+
+
     </body>
   </html>
