@@ -23,27 +23,6 @@
             </ul>
           </nav>
           <br>
-          <center><form autocomplete="off" position="relative" action="/Scripts.js">
-            <div class="autocomplete"  style="width:300px;">
-              <input id="myInput" type="text" name="myCity" placeholder="United States City">
-            </div>
-            <input type="submit">
-          </form>
-          <script>
-            var city_names = ["Aberdeen", "Abilene", "Akron", "Albany", "Albuquerque", "Alexandria", "Allentown", "Amarillo", "Anaheim", "Anchorage", "Ann Arbor", "Antioch", "Apple Valley", "Appleton", "Arlington", "Arvada", "Asheville", "Athens", "Atlanta", "Atlantic City", "Augusta", "Aurora", "Austin", "Bakersfield", "Baltimore", "Barnstable", "Baton Rouge", "Beaumont", "Bel Air", "Bellevue", "Berkeley", "Bethlehem", "Billings", "Birmingham", "Bloomington", "Boise", "Boise City", "Bonita Springs", "Boston", "Boulder", "Bradenton", "Bremerton", "Bridgeport", "Brighton", "Brownsville", "Bryan", "Buffalo", "Burbank", "Burlington", "Cambridge", "Canton", "Cape Coral", "Carrollton", "Cary", "Cathedral City", "Cedar Rapids", "Champaign", "Chandler", "Charleston", "Charlotte", "Chattanooga", "Chesapeake", "Chicago", "Chula Vista", "Cincinnati", "Clarke County", "Clarksville", "Clearwater", "Cleveland", "College Station", "Colorado Springs", "Columbia", "Columbus", "Concord", "Coral Springs", "Corona", "Corpus Christi", "Costa Mesa", "Dallas", "Daly City", "Danbury", "Davenport", "Davidson County", "Dayton", "Daytona Beach", "Deltona", "Denton", "Denver", "Des Moines", "Detroit", "Downey", "Duluth", "Durham", "El Monte", "El Paso", "Elizabeth", "Elk Grove", "Elkhart", "Erie", "Escondido", "Eugene", "Evansville", "Fairfield", "Fargo", "Fayetteville", "Fitchburg", "Flint", "Fontana", "Fort Collins", "Fort Lauderdale", "Fort Smith", "Fort Walton Beach", "Fort Wayne", "Fort Worth", "Frederick", "Fremont", "Fresno", "Fullerton", "Gainesville", "Garden Grove", "Garland", "Gastonia", "Gilbert", "Glendale", "Grand Prairie", "Grand Rapids", "Grayslake", "Green Bay", "GreenBay", "Greensboro", "Greenville", "Gulfport-Biloxi", "Hagerstown", "Hampton", "Harlingen", "Harrisburg", "Hartford", "Havre de Grace", "Hayward", "Hemet", "Henderson", "Hesperia", "Hialeah", "Hickory", "High Point", "Hollywood", "Honolulu", "Houma", "Houston", "Howell", "Huntington", "Huntington Beach", "Huntsville", "Independence", "Indianapolis", "Inglewood", "Irvine", "Irving", "Jackson", "Jacksonville", "Jefferson", "Jersey City", "Johnson City", "Joliet", "Kailua", "Kalamazoo", "Kaneohe", "Kansas City", "Kennewick", "Kenosha", "Killeen", "Kissimmee", "Knoxville", "Lacey", "Lafayette", "Lake Charles", "Lakeland", "Lakewood", "Lancaster", "Lansing", "Laredo", "Las Cruces", "Las Vegas", "Layton", "Leominster", "Lewisville", "Lexington", "Lincoln", "Little Rock", "Long Beach", "Lorain", "Los Angeles", "Louisville", "Lowell", "Lubbock", "Macon", "Madison", "Manchester", "Marina", "Marysville", "McAllen", "McHenry", "Medford", "Melbourne", "Memphis", "Merced", "Mesa", "Mesquite", "Miami", "Milwaukee", "Minneapolis", "Miramar", "Mission Viejo", "Mobile", "Modesto", "Monroe", "Monterey", "Montgomery", "Moreno Valley", "Murfreesboro", "Murrieta", "Muskegon", "Myrtle Beach", "Naperville", "Naples", "Nashua", "Nashville", "New Bedford", "New Haven", "New London", "New Orleans", "New York", "New York City", "Newark", "Newburgh", "Newport News", "Norfolk", "Normal", "Norman", "North Charleston", "North Las Vegas", "North Port", "Norwalk", "Norwich", "Oakland", "Ocala", "Oceanside", "Odessa", "Ogden", "Oklahoma City", "Olathe", "Olympia", "Omaha", "Ontario", "Orange", "Orem", "Orlando", "Overland Park", "Oxnard", "Palm Bay", "Palm Springs", "Palmdale", "Panama City", "Pasadena", "Paterson", "Pembroke Pines", "Pensacola", "Peoria", "Philadelphia", "Phoenix", "Pittsburgh", "Plano", "Pomona", "Pompano Beach", "Port Arthur", "Port Orange", "Port Saint Lucie", "Port St. Lucie", "Portland", "Portsmouth", "Poughkeepsie", "Providence", "Provo", "Pueblo", "Punta Gorda", "Racine", "Raleigh", "Rancho Cucamonga", "Reading", "Redding", "Reno", "Richland", "Richmond", "Richmond County", "Riverside", "Roanoke", "Rochester", "Rockford", "Roseville", "Round Lake Beach", "Sacramento", "Saginaw", "Saint Louis", "Saint Paul", "Saint Petersburg", "Salem", "Salinas", "Salt Lake City", "San Antonio", "San Bernardino", "San Buenaventura", "San Diego", "San Francisco", "San Jose", "Santa Ana", "Santa Barbara", "Santa Clara", "Santa Clarita", "Santa Cruz", "Santa Maria", "Santa Rosa", "Sarasota", "Savannah", "Scottsdale", "Scranton", "Seaside", "Seattle", "Sebastian", "Shreveport", "Simi Valley", "Sioux City", "Sioux Falls", "South Bend", "South Lyon", "Spartanburg", "Spokane", "Springdale", "Springfield", "St. Louis", "St. Paul", "St. Petersburg", "Stamford", "Sterling Heights", "Stockton", "Sunnyvale", "Syracuse", "Tacoma", "Tallahassee", "Tampa", "Temecula", "Tempe", "Thornton", "Thousand Oaks", "Toledo", "Topeka", "Torrance", "Trenton", "Tucson", "Tulsa", "Tuscaloosa", "Tyler", "Utica", "Vallejo", "Vancouver", "Vero Beach", "Victorville", "Virginia Beach", "Visalia", "Waco", "Warren", "Washington", "Waterbury", "Waterloo", "West Covina", "West Valley City", "Westminster", "Wichita", "Wilmington", "Winston", "Winter Haven", "Worcester", "Yakima", "Yonkers", "York", "Youngstown"];
-            autocomplete(document.getElementById("myInput"), city_names);
-          </script>
-        </div>
-      </header>
-      <div class="container">
-      <div class="card-deck" id="5_day_forecast">
-
-      </div>
-    </div>
-      <section>
-        <br>
-
-
           <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
@@ -63,8 +42,10 @@
           function getFarenheitTemp(temp){
             return (9*temp/5)+32;
           }
-          $(document).ready(function() {
-            var url ='https://api.weatherstack.com/forecast?access_key=5bc82451636190abd9d7afe6fe9b20b5&query=Boulder&forecast_days=6&hourly=1&interval=24'; //Place your weatherstack API Call Here - access_key to be used: 5bc82451636190abd9d7afe6fe9b20b5
+          function homeAPI() {
+            var apiKey = "5bc82451636190abd9d7afe6fe9b20b5";
+            var local = document.getElementById("myInput").value;
+            var url = `https://api.weatherstack.com/forecast?access_key=${apiKey}&query=${local}&forecast_days=6&hourly=1&interval=24`; //Place your weatherstack API Call Here - access_key to be used: 5bc82451636190abd9d7afe6fe9b20b5
                 $.ajax({url:url, dataType:"jsonp"}).then(function(data) {
                 console.log(data);//Review all of the data returned
                 console.log("Current Temp: " + data.current.temperature);//View Today's Temp
@@ -94,59 +75,208 @@
                 getDayofWeek(d,m,y);
                 return data.current;
               }
-
-
-
-              for(var i = 0; i < 5; i++) {
-
-
-
-                                  var divcard = document.createElement("div");
-                                  divcard.setAttribute("class", "card");
-
-
-                                  var divbody = document.createElement("div");
-                                  divbody.setAttribute("class", "card-body");
-
-                                  getKey(i);
-                                  var title = document.createElement("h5");
-                                  title.setAttribute("class", "card-title");
+                                  //day 1
+                                  var thisDay = getKey(0);
+                                  var title = document.getElementById("day1");
                                   title.innerHTML = dayOfWeek;
 
-                                  var pic = document.createElement("img");
-                                  pic.setAttribute('class', 'img-fluid');
-                                  pic.src = getKey(i).hourly[0].weather_icons;
+                                  var pic = document.getElementById("img1");
+                                  pic.src = thisDay.hourly[0].weather_icons;
 
-                                  var max = document.createElement("p");
-                                  var temp = getFarenheitTemp(getKey(i).maxtemp);
-                                  max.innerHTML = "High: " + temp;
-                                  max.setAttribute('class', 'card-text');
 
-                                  var min = document.createElement("p");
-                                  var mintemp = getFarenheitTemp(getKey(i).mintemp);
-                                  min.innerHTML = "Low: " + mintemp;
-                                  min.setAttribute('class', 'card-text');
+                                  var max = document.getElementById("high1");
+                                  var temp = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp + "F";
 
-                                  var nextPage = document.createElement("button");
+
+                                  var min = document.getElementById("low1");
+                                  var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp + "F";
+
+                                  var nextPage = document.getElementById("btn1");
                                   nextPage.innerHTML = "TO WTW";
-                                  nextPage.setAttribute('class', 'btn btn-outline-info');
                                   nextPage.onclick = function(){
                                     window.location = "WTW.html";
                                   }
+                                  //day2
+                                  var thisDay = getKey(1);
+                                  var title = document.getElementById("day2");
+                                  title.innerHTML = dayOfWeek;
+
+                                  var pic = document.getElementById("img2");
+                                  pic.src = thisDay.hourly[0].weather_icons;
 
 
-                                  divbody.appendChild(title);
-                                  divbody.appendChild(pic);
-                                  divbody.appendChild(max);
-                                  divbody.appendChild(min);
-                                  divcard.appendChild(divbody);
-                                  divcard.appendChild(nextPage);
-                                  document.getElementById('5_day_forecast').appendChild(divcard);
+                                  var max = document.getElementById("high2");
+                                  var temp = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp + "F";
 
-                              }
+
+                                  var min = document.getElementById("low2");
+                                  var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp + "F";
+
+                                  var nextPage = document.getElementById("btn2");
+                                  nextPage.innerHTML = "TO WTW";
+                                  nextPage.onclick = function(){
+                                    window.location = "WTW.html";
+                                  }
+                                  //day3
+                                  var thisDay = getKey(2);
+                                  var title = document.getElementById("day3");
+                                  title.innerHTML = dayOfWeek;
+
+                                  var pic = document.getElementById("img3");
+                                  pic.src = thisDay.hourly[0].weather_icons;
+
+
+                                  var max = document.getElementById("high3");
+                                  var temp = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp + "F";
+
+
+                                  var min = document.getElementById("low3");
+                                  var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp + "F";
+
+                                  var nextPage = document.getElementById("btn3");
+                                  nextPage.innerHTML = "TO WTW";
+                                  nextPage.onclick = function(){
+                                    window.location = "WTW.html";
+                                  }
+                                  //day 4
+                                  var thisDay = getKey(3);
+                                  var title = document.getElementById("day4");
+                                  title.innerHTML = dayOfWeek;
+
+                                  var pic = document.getElementById("img4");
+                                  pic.src = thisDay.hourly[0].weather_icons;
+
+
+                                  var max = document.getElementById("high4");
+                                  var temp = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp + "F";
+
+
+                                  var min = document.getElementById("low4");
+                                  var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp + "F";
+
+                                  var nextPage = document.getElementById("btn4");
+                                  nextPage.innerHTML = "TO WTW";
+                                  nextPage.onclick = function(){
+                                    window.location = "WTW.html";
+                                  }
+                                  //day 5
+                                  var thisDay = getKey(4);
+                                  var title = document.getElementById("day5");
+                                  title.innerHTML = dayOfWeek;
+
+                                  var pic = document.getElementById("img5");
+                                  pic.src = thisDay.hourly[0].weather_icons;
+
+
+                                  var max = document.getElementById("high5");
+                                  var temp = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp + "F";
+
+
+                                  var min = document.getElementById("low5");
+                                  var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp + "F";
+
+                                  var nextPage = document.getElementById("btn5");
+                                  nextPage.innerHTML = "TO WTW";
+                                  nextPage.onclick = function(){
+                                    window.location = "WTW.html";
+                                    var place = thisDay.location;
+                                  }
+
+
+
+
                             })
-                      		})
-                       	</script>
+                          }
+                        </script>
+          <center><form autocomplete="off" position="relative" action="javascript:$(document).ready(homeAPI);">
+            <div class="autocomplete"  style="width:300px;">
+              <input id="myInput" type="text" name="myCity" placeholder="United States City">
+            </div>
+            <input type="submit">
+          </form>
+          <script>
+            var city_names = ["Aberdeen", "Abilene", "Akron", "Albany", "Albuquerque", "Alexandria", "Allentown", "Amarillo", "Anaheim", "Anchorage", "Ann Arbor", "Antioch", "Apple Valley", "Appleton", "Arlington", "Arvada", "Asheville", "Athens", "Atlanta", "Atlantic City", "Augusta", "Aurora", "Austin", "Bakersfield", "Baltimore", "Barnstable", "Baton Rouge", "Beaumont", "Bel Air", "Bellevue", "Berkeley", "Bethlehem", "Billings", "Birmingham", "Bloomington", "Boise", "Boise City", "Bonita Springs", "Boston", "Boulder", "Bradenton", "Bremerton", "Bridgeport", "Brighton", "Brownsville", "Bryan", "Buffalo", "Burbank", "Burlington", "Cambridge", "Canton", "Cape Coral", "Carrollton", "Cary", "Cathedral City", "Cedar Rapids", "Champaign", "Chandler", "Charleston", "Charlotte", "Chattanooga", "Chesapeake", "Chicago", "Chula Vista", "Cincinnati", "Clarke County", "Clarksville", "Clearwater", "Cleveland", "College Station", "Colorado Springs", "Columbia", "Columbus", "Concord", "Coral Springs", "Corona", "Corpus Christi", "Costa Mesa", "Dallas", "Daly City", "Danbury", "Davenport", "Davidson County", "Dayton", "Daytona Beach", "Deltona", "Denton", "Denver", "Des Moines", "Detroit", "Downey", "Duluth", "Durham", "El Monte", "El Paso", "Elizabeth", "Elk Grove", "Elkhart", "Erie", "Escondido", "Eugene", "Evansville", "Fairfield", "Fargo", "Fayetteville", "Fitchburg", "Flint", "Fontana", "Fort Collins", "Fort Lauderdale", "Fort Smith", "Fort Walton Beach", "Fort Wayne", "Fort Worth", "Frederick", "Fremont", "Fresno", "Fullerton", "Gainesville", "Garden Grove", "Garland", "Gastonia", "Gilbert", "Glendale", "Grand Prairie", "Grand Rapids", "Grayslake", "Green Bay", "GreenBay", "Greensboro", "Greenville", "Gulfport-Biloxi", "Hagerstown", "Hampton", "Harlingen", "Harrisburg", "Hartford", "Havre de Grace", "Hayward", "Hemet", "Henderson", "Hesperia", "Hialeah", "Hickory", "High Point", "Hollywood", "Honolulu", "Houma", "Houston", "Howell", "Huntington", "Huntington Beach", "Huntsville", "Independence", "Indianapolis", "Inglewood", "Irvine", "Irving", "Jackson", "Jacksonville", "Jefferson", "Jersey City", "Johnson City", "Joliet", "Kailua", "Kalamazoo", "Kaneohe", "Kansas City", "Kennewick", "Kenosha", "Killeen", "Kissimmee", "Knoxville", "Lacey", "Lafayette", "Lake Charles", "Lakeland", "Lakewood", "Lancaster", "Lansing", "Laredo", "Las Cruces", "Las Vegas", "Layton", "Leominster", "Lewisville", "Lexington", "Lincoln", "Little Rock", "Long Beach", "Lorain", "Los Angeles", "Louisville", "Lowell", "Lubbock", "Macon", "Madison", "Manchester", "Marina", "Marysville", "McAllen", "McHenry", "Medford", "Melbourne", "Memphis", "Merced", "Mesa", "Mesquite", "Miami", "Milwaukee", "Minneapolis", "Miramar", "Mission Viejo", "Mobile", "Modesto", "Monroe", "Monterey", "Montgomery", "Moreno Valley", "Murfreesboro", "Murrieta", "Muskegon", "Myrtle Beach", "Naperville", "Naples", "Nashua", "Nashville", "New Bedford", "New Haven", "New London", "New Orleans", "New York", "New York City", "Newark", "Newburgh", "Newport News", "Norfolk", "Normal", "Norman", "North Charleston", "North Las Vegas", "North Port", "Norwalk", "Norwich", "Oakland", "Ocala", "Oceanside", "Odessa", "Ogden", "Oklahoma City", "Olathe", "Olympia", "Omaha", "Ontario", "Orange", "Orem", "Orlando", "Overland Park", "Oxnard", "Palm Bay", "Palm Springs", "Palmdale", "Panama City", "Pasadena", "Paterson", "Pembroke Pines", "Pensacola", "Peoria", "Philadelphia", "Phoenix", "Pittsburgh", "Plano", "Pomona", "Pompano Beach", "Port Arthur", "Port Orange", "Port Saint Lucie", "Port St. Lucie", "Portland", "Portsmouth", "Poughkeepsie", "Providence", "Provo", "Pueblo", "Punta Gorda", "Racine", "Raleigh", "Rancho Cucamonga", "Reading", "Redding", "Reno", "Richland", "Richmond", "Richmond County", "Riverside", "Roanoke", "Rochester", "Rockford", "Roseville", "Round Lake Beach", "Sacramento", "Saginaw", "Saint Louis", "Saint Paul", "Saint Petersburg", "Salem", "Salinas", "Salt Lake City", "San Antonio", "San Bernardino", "San Buenaventura", "San Diego", "San Francisco", "San Jose", "Santa Ana", "Santa Barbara", "Santa Clara", "Santa Clarita", "Santa Cruz", "Santa Maria", "Santa Rosa", "Sarasota", "Savannah", "Scottsdale", "Scranton", "Seaside", "Seattle", "Sebastian", "Shreveport", "Simi Valley", "Sioux City", "Sioux Falls", "South Bend", "South Lyon", "Spartanburg", "Spokane", "Springdale", "Springfield", "St. Louis", "St. Paul", "St. Petersburg", "Stamford", "Sterling Heights", "Stockton", "Sunnyvale", "Syracuse", "Tacoma", "Tallahassee", "Tampa", "Temecula", "Tempe", "Thornton", "Thousand Oaks", "Toledo", "Topeka", "Torrance", "Trenton", "Tucson", "Tulsa", "Tuscaloosa", "Tyler", "Utica", "Vallejo", "Vancouver", "Vero Beach", "Victorville", "Virginia Beach", "Visalia", "Waco", "Warren", "Washington", "Waterbury", "Waterloo", "West Covina", "West Valley City", "Westminster", "Wichita", "Wilmington", "Winston", "Winter Haven", "Worcester", "Yakima", "Yonkers", "York", "Youngstown"];
+            autocomplete(document.getElementById("myInput"), city_names);
+          </script>
+        </div>
+      </header>
+      <br>
+      <div class="container">
+      <div class="card-deck" id="5_day_forecast">
+        <div class="row">
+  <div class="col-sm-4">
+    <div id="forecast" class="card">
+      <div class="card-body">
+        <h5 id="day1" class="card-title">Day</h5>
+        <img id="img1" src="" alt="weather image">
+        <p id="high1" class="card-text">High:</p>
+        <p id="low1" class="card-text">Low:</p>
+        <a id="btn1" href="WTW.html" class="btn btn-primary">To WTW</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div id="forecast" class="card">
+      <div class="card-body">
+        <h5 id="day2" class="card-title">Day</h5>
+        <img id="img2" src="" alt="weather image">
+        <p id="high2" class="card-text">High:</p>
+        <p id="low2" class="card-text">Low:</p>
+        <a id="btn2" href="WTW.html" class="btn btn-primary">To WTW</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div id="forecast" class="card">
+      <div class="card-body">
+        <h5 id="day3" class="card-title">Day</h5>
+        <img id="img3" src="" alt="weather image">
+        <p id="high3" class="card-text">High:</p>
+        <p id="low3" class="card-text">Low:</p>
+        <a id="btn3" href="WTW.html" class="btn btn-primary">To WTW</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div id="forecast" class="card">
+      <div class="card-body">
+        <h5 id="day4" class="card-title">Day</h5>
+        <img id="img4" src="" alt="weather image">
+        <p id="high4" class="card-text">High:</p>
+        <p id="low4" class="card-text">Low:</p>
+        <a id="btn4" href="WTW.html" class="btn btn-primary">To WTW</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div id="forecast" class="card">
+      <div class="card-body">
+        <h5 id="day5" class="card-title">Day</h5>
+        <img id="img5" src="" alt="weather image">
+        <p id="high5" class="card-text">High:</p>
+        <p id="low5" class="card-text">Low:</p>
+        <a id="btn5" href="WTW.html" class="btn btn-primary">To WTW</a>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+      <section>
+        <br>
+
+
+
         </div>
       </section>
 
