@@ -5,6 +5,7 @@
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
       <title>Home Page</title>
       <link href="homestyles.css" rel="stylesheet" type="text/css" />
+
     </head>
     <body>
       <header>
@@ -93,10 +94,17 @@
                                   var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
                                   min.innerHTML = "Low: " + mintemp + "F";
 
+                                  var humidity = thisDay.hourly[0].humidity;
+                                  var wind = thisDay.hourly[0].wind_speed;
+                                  var precip = thisDay.hourly[0].precip;
+
                                   var nextPage = document.getElementById("btn1");
                                   nextPage.innerHTML = "TO WTW";
                                   nextPage.onclick = function(){
                                     window.location = "WTW.html";
+                                    localStorage.setItem("windy", `${wind}`);
+                                    localStorage.setItem("humidy", `${humidity}`);
+                                    localStorage.setItem("rainy", `${precip}`);
                                   }
                                   //day2
                                   var thisDay = getKey(1);
@@ -116,10 +124,17 @@
                                   var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
                                   min.innerHTML = "Low: " + mintemp + "F";
 
+                                  var humidity = thisDay.hourly[0].humidity;
+                                  var wind = thisDay.hourly[0].wind_speed;
+                                  var precip = thisDay.hourly[0].precip;
+
                                   var nextPage = document.getElementById("btn2");
                                   nextPage.innerHTML = "TO WTW";
                                   nextPage.onclick = function(){
                                     window.location = "WTW.html";
+                                    localStorage.setItem("windy", `${wind}`);
+                                    localStorage.setItem("humidy", `${humidity}`);
+                                    localStorage.setItem("rainy", `${precip}`);
                                   }
                                   //day3
                                   var thisDay = getKey(2);
@@ -139,10 +154,17 @@
                                   var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
                                   min.innerHTML = "Low: " + mintemp + "F";
 
+                                  var humidity = thisDay.hourly[0].humidity;
+                                  var wind = thisDay.hourly[0].wind_speed;
+                                  var precip = thisDay.hourly[0].precip;
+
                                   var nextPage = document.getElementById("btn3");
                                   nextPage.innerHTML = "TO WTW";
                                   nextPage.onclick = function(){
                                     window.location = "WTW.html";
+                                    localStorage.setItem("windy", `${wind}`);
+                                    localStorage.setItem("humidy", `${humidity}`);
+                                    localStorage.setItem("rainy", `${precip}`);
                                   }
                                   //day 4
                                   var thisDay = getKey(3);
@@ -162,10 +184,17 @@
                                   var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
                                   min.innerHTML = "Low: " + mintemp + "F";
 
+                                  var humidity = thisDay.hourly[0].humidity;
+                                  var wind = thisDay.hourly[0].wind_speed;
+                                  var precip = thisDay.hourly[0].precip;
+
                                   var nextPage = document.getElementById("btn4");
                                   nextPage.innerHTML = "TO WTW";
                                   nextPage.onclick = function(){
                                     window.location = "WTW.html";
+                                    localStorage.setItem("windy", `${wind}`);
+                                    localStorage.setItem("humidy", `${humidity}`);
+                                    localStorage.setItem("rainy", `${precip}`);
                                   }
                                   //day 5
                                   var thisDay = getKey(4);
@@ -185,11 +214,17 @@
                                   var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
                                   min.innerHTML = "Low: " + mintemp + "F";
 
+                                  var humidity = thisDay.hourly[0].humidity;
+                                  var wind = thisDay.hourly[0].wind_speed;
+                                  var precip = thisDay.hourly[0].precip;
+
                                   var nextPage = document.getElementById("btn5");
                                   nextPage.innerHTML = "TO WTW";
                                   nextPage.onclick = function(){
                                     window.location = "WTW.html";
-                                    var place = thisDay.location;
+                                    localStorage.setItem("windy", `${wind}`);
+                                    localStorage.setItem("humidy", `${humidity}`);
+                                    localStorage.setItem("rainy", `${precip}`);
                                   }
 
 

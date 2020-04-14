@@ -5,8 +5,32 @@
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
       <title>WTW</title>
       <link href="homestyles.css" rel="stylesheet" type="text/css" />
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+      <script>
+      function wtwAPI() {
+        var local = document.getElementById("myInput").value;
+          var url = `https://api.weatherstack.com/forecast?access_key=5bc82451636190abd9d7afe6fe9b20b5&query=${local}`;
+          $.ajax({url:url, dataType:"jsonp"}).then(function(data) {
+            document.getElementById("humid").innerHTML = data.current.humidity + "%";
+            document.getElementById("wind").innerHTML = data.current.wind_speed + "mph";
+            document.getElementById("precip").innerHTML = data.current.precip + "%";
+
+          })
+        }
+
+      </script>
+      <script>
+      function load(){
+        document.getElementById("humid").innerHTML = localStorage.getItem("humidy");
+        document.getElementById("wind").innerHTML = localStorage.getItem("windy");
+        document.getElementById("precip").innerHTML = localStorage.getItem("rainy");
+
+      }
+      </script>
     </head>
-    <body>
+    <body onload="load()">
       <header>
         <div class="container-fluid">
           <h1>
@@ -23,22 +47,7 @@
             </ul>
           </nav>
           <br>
-          <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-          <script>
-          function wtwAPI() {
-            var local = document.getElementById("myInput").value;
-              var url = `https://api.weatherstack.com/forecast?access_key=5bc82451636190abd9d7afe6fe9b20b5&query=${local}`;
-              $.ajax({url:url, dataType:"jsonp"}).then(function(data) {
-                document.getElementById("humid").innerHTML = data.current.humidity + "%";
-                document.getElementById("wind").innerHTML = data.current.wind_speed + "mph";
-                document.getElementById("precip").innerHTML = data.current.precip + "%";
 
-              })
-            }
-
-          </script>
           <center><form autocomplete="off" action="javascript:$(document).ready(wtwAPI);">
             <div class="autocomplete" style="width:300px;">
               <input id="myInput" type="text" name="myCity" placeholder="United States City">
@@ -60,7 +69,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h5  class="card-title">Humidity</h5>
-                    <p id="humid" class="card-text">place.humidity</p>
+                    <p id="humid" class="card-text">----</p>
                   </div>
                 </div>
                 <div class="card">
