@@ -5,9 +5,36 @@
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
       <title>Home Page</title>
       <link href="homestyles.css" rel="stylesheet" type="text/css" />
+      <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+              }
+            else {
+                document.getElementById("myInput").value = "Lubbock";
+            }
+          }
 
+          function showPosition(position) {
+              console.log(position.coords.latitude);
+              console.log(position.coords.longitude);
+              document.getElementById("myInput").value = position.coords.latitude + "," + position.coords.longitude;
+              console.log(document.getElementById("myInput").value);
+
+
+          }
+      </script>
+      <script>
+      function loadIt(){
+          document.getElementById("myInput").value = "Lubbock";
+          getLocation();
+          setTimeout(() => { homeAPI(); }, 2000);
+
+
+        }
+      </script>
     </head>
-    <body>
+    <body onload="loadIt()">
       <header>
         <div class="container-fluid">
           <h1>
