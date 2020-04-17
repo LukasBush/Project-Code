@@ -17,6 +17,51 @@
             document.getElementById("wind").innerHTML = data.current.wind_speed + "mph";
             document.getElementById("precip").innerHTML = data.current.precip + "%";
 
+
+              var temp = data.current.temperature;
+              temp = (temp * (9/5)) + 32;
+              var hat = document.getElementById("hat");
+              var shirt = document.getElementById("shirt");
+              var pants = document.getElementById("pants");
+              var gloves = document.getElementById("gloves");
+              var shoes = document.getElementById("shoes");
+              var socks = document.getElementById("socks");
+
+              console.log(temp);
+
+              if(temp >= 70){
+                hat.src = "SummerClothes/hat-removebg.png";
+                shirt.src = "SummerClothes/t-shirt-removebg.png";
+                pants.src = "SummerClothes/shorts-removebg.png";
+                gloves.src = "";
+                shoes.src = "SummerClothes/sliders-removebg.png";
+                socks.src = "SummerClothes/socks.jpg";
+              }
+              else if((temp < 70) && (temp >= 50)){
+                hat.src = "";
+                shirt.src = "SpringClothes/long-sleeve-shirt-removebg.png";
+                pants.src = "SpringClothes/sweatpants-removebg.png";
+                gloves.src = "";
+                shoes.src = "SpringClothes/tennis-shoes-removebg.png";
+                socks.src = "SpringClothes/socks-removebg.png";
+              }
+              else if((temp < 50) && (temp >= 30)){
+                hat.src = "";
+                shirt.src = "coat/Winter3-removebg-preview.png";
+                pants.src = "SummerClothes/jeans-removebg.png";
+                gloves.src = "";
+                shoes.src = "shoes/fall_shoes__4_-removebg-preview.png";
+                socks.src = "";
+              }
+              else if(temp < 30){
+                hat.src = "hat/hat-removebg-preview.png";
+                shirt.src = "coat/winter2-removebg-preview.png";
+                pants.src = "pants/fall_pant-removebg-preview.png";
+                gloves.src = "gloves/winter_shoes__6_-removebg-preview.png";
+                shoes.src = "shoes/winter_shoes__3_-removebg-preview.png";
+                socks.src = "";
+              }
+
           })
         }
 
@@ -89,18 +134,18 @@
             <div class="col-6">
                 <div class="container">
                   <div class="row">
-                    <div class="col-8"><center><img src="hat/hat-removebg-preview.png" height="100"></center></div>
+                    <div class="col-8"><center><img id="hat" height="100"></center></div>
                   </div>
                   <div class="row">
-                    <div class="col-8"><center><img src="coat/fall_coat__3_-removebg-preview.png" height="200"></center></div>
+                    <div class="col-8"><center><img id="shirt" height="210"></center></div>
                   </div>
                   <div class="row">
-                    <div class="col-8"><center><img src="pants/fall_winter-removebg-preview.png" height="200"></center></div>
-                    <div class="col-4"><center><img src="gloves/winter_glove-removebg-preview.png" height="75"></center></div>
+                    <div class="col-8"><center><img id="pants" height="200"></center></div>
+                    <div class="col-4"><center><img id="gloves" height="75"></center></div>
                   </div>
                   <div class="row">
-                    <div class="col-8"><center><img src="shoes/fall_shoes__4_-removebg-preview.png" height="150"></center></div>
-                    <div class="col-4"><center><img src="#" height="75"></center></div>
+                    <div class="col-8"><center><img id="shoes" height="150"></center></div>
+                    <div class="col-4"><center><img id="socks" height="75"></center></div>
                   </div>
                 </div>
             </div>
