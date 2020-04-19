@@ -16,7 +16,11 @@
             document.getElementById("humid").innerHTML = data.current.humidity + "%";
             document.getElementById("wind").innerHTML = data.current.wind_speed + "mph";
             document.getElementById("precip").innerHTML = data.current.precip + "%";
-
+            var n =  new Date();
+            var y = n.getFullYear();
+            var m = n.getMonth() + 1;
+            var d = n.getDate();
+            document.getElementById("card_date").innerHTML = m + "/" + d + "/" + y;
 
               var temp = data.current.temperature;
               temp = (temp * (9/5)) + 32;
@@ -68,9 +72,58 @@
       </script>
       <script>
       function load(){
+        var temp = localStorage.getItem("high");
         document.getElementById("humid").innerHTML = localStorage.getItem("humidy");
         document.getElementById("wind").innerHTML = localStorage.getItem("windy");
         document.getElementById("precip").innerHTML = localStorage.getItem("rainy");
+        document.getElementById("picture").src = localStorage.getItem("pic");
+        document.getElementById("high").innerHTML = temp + " F";
+        document.getElementById("low").innerHTML = localStorage.getItem("low");
+        document.getElementById("card_date").innerHTML = localStorage.getItem("day");
+        document.getElementById("myInput").value = localStorage.getItem("loca");
+
+        //Update WTW image upon opening page
+        var hat = document.getElementById("hat");
+        var shirt = document.getElementById("shirt");
+        var pants = document.getElementById("pants");
+        var gloves = document.getElementById("gloves");
+        var shoes = document.getElementById("shoes");
+        var socks = document.getElementById("socks");
+
+        console.log(temp);
+
+        if(temp >= 70){
+          hat.src = "SummerClothes/hat-removebg.png";
+          shirt.src = "SummerClothes/t-shirt-removebg.png";
+          pants.src = "SummerClothes/shorts-removebg.png";
+          gloves.src = "";
+          shoes.src = "SummerClothes/sliders-removebg.png";
+          socks.src = "SummerClothes/socks.jpg";
+        }
+        else if((temp < 70) && (temp >= 50)){
+          hat.src = "";
+          shirt.src = "SpringClothes/long-sleeve-shirt-removebg.png";
+          pants.src = "SpringClothes/sweatpants-removebg.png";
+          gloves.src = "";
+          shoes.src = "SpringClothes/tennis-shoes-removebg.png";
+          socks.src = "SpringClothes/socks-removebg.png";
+        }
+        else if((temp < 50) && (temp >= 30)){
+          hat.src = "";
+          shirt.src = "coat/Winter3-removebg-preview.png";
+          pants.src = "SummerClothes/jeans-removebg.png";
+          gloves.src = "";
+          shoes.src = "shoes/fall_shoes__4_-removebg-preview.png";
+          socks.src = "";
+        }
+        else if(temp < 30){
+          hat.src = "hat/hat-removebg-preview.png";
+          shirt.src = "coat/winter2-removebg-preview.png";
+          pants.src = "pants/fall_pant-removebg-preview.png";
+          gloves.src = "gloves/winter_shoes__6_-removebg-preview.png";
+          shoes.src = "shoes/winter_shoes__3_-removebg-preview.png";
+          socks.src = "";
+        }
 
       }
       </script>
@@ -111,6 +164,24 @@
             <div class="col-2">
               <br>
               <div class = "card-column">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 id="card_date" class="card-title">Date</h5>
+                    <img id="picture" class="card-img" src="" alt="weather icon">
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">High</h5>
+                    <p id="high" class="card-text">---</p>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Low</h5>
+                    <p id="low" class="card-text">---</p>
+                  </div>
+                </div>
                 <div class="card">
                   <div class="card-body">
                     <h5  class="card-title">Humidity</h5>

@@ -78,7 +78,7 @@
                 console.log(data);//Review all of the data returned
                 console.log("Current Temp: " + data.current.temperature);//View Today's Temp
                 var current_time = data.location.localtime;//Retrieve the current timestamp
-
+                var winw = document.getElementById("myInput").value
 
 
 
@@ -107,19 +107,20 @@
                                   var thisDay = getKey(0);
                                   var title = document.getElementById("day1");
                                   title.innerHTML = dayOfWeek;
+                                  var day1 = dayOfWeek;
 
-                                  var pic = document.getElementById("img1");
-                                  pic.src = thisDay.hourly[0].weather_icons;
+                                  var pic1 = document.getElementById("img1");
+                                  pic1.src = thisDay.hourly[0].weather_icons;
 
 
                                   var max = document.getElementById("high1");
-                                  var temp = Math.round(getFarenheitTemp(thisDay.maxtemp));
-                                  max.innerHTML = "High: " + temp + "F";
+                                  var temp1 = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp1 + "F";
 
 
                                   var min = document.getElementById("low1");
-                                  var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
-                                  min.innerHTML = "Low: " + mintemp + "F";
+                                  var mintemp1 = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp1 + "F";
 
                                   var humidity = thisDay.hourly[0].humidity;
                                   var wind = thisDay.hourly[0].wind_speed;
@@ -132,24 +133,30 @@
                                     localStorage.setItem("windy", `${wind} mph`);
                                     localStorage.setItem("humidy", `${humidity}%`);
                                     localStorage.setItem("rainy", `${precip}%`);
+                                    localStorage.setItem("day", `${day1}`);
+                                    localStorage.setItem("high", `${temp1}`);
+                                    localStorage.setItem("low", `${mintemp1} F`);
+                                    localStorage.setItem("pic", `${pic1.src}`);
+                                    localStorage.setItem("loca", `${winw}`);
                                   }
                                   //day2
                                   var thisDay = getKey(1);
                                   var title = document.getElementById("day2");
                                   title.innerHTML = dayOfWeek;
+                                  var day2 = dayOfWeek;
 
-                                  var pic = document.getElementById("img2");
-                                  pic.src = thisDay.hourly[0].weather_icons;
+                                  var pic2 = document.getElementById("img2");
+                                  pic2.src = thisDay.hourly[0].weather_icons;
 
 
                                   var max = document.getElementById("high2");
-                                  var temp = Math.round(getFarenheitTemp(thisDay.maxtemp));
-                                  max.innerHTML = "High: " + temp + "F";
+                                  var temp2 = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp2 + "F";
 
 
                                   var min = document.getElementById("low2");
-                                  var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
-                                  min.innerHTML = "Low: " + mintemp + "F";
+                                  var mintemp2 = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp2 + "F";
 
                                   var humidity2 = thisDay.hourly[0].humidity;
                                   var wind2 = thisDay.hourly[0].wind_speed;
@@ -162,24 +169,30 @@
                                     localStorage.setItem("windy", `${wind2} mph`);
                                     localStorage.setItem("humidy", `${humidity2}%`);
                                     localStorage.setItem("rainy", `${precip2}%`);
+                                    localStorage.setItem("day", `${day2}`);
+                                    localStorage.setItem("high", `${temp2}`);
+                                    localStorage.setItem("low", `${mintemp2} F`);
+                                    localStorage.setItem("pic", `${pic2.src}`);
+                                    localStorage.setItem("loca", `${winw}`);
                                   }
                                   //day3
                                   var thisDay = getKey(2);
                                   var title = document.getElementById("day3");
                                   title.innerHTML = dayOfWeek;
+                                  var day3 = dayOfWeek;
 
-                                  var pic = document.getElementById("img3");
-                                  pic.src = thisDay.hourly[0].weather_icons;
+                                  var pic3 = document.getElementById("img3");
+                                  pic3.src = thisDay.hourly[0].weather_icons;
 
 
                                   var max = document.getElementById("high3");
-                                  var temp = Math.round(getFarenheitTemp(thisDay.maxtemp));
-                                  max.innerHTML = "High: " + temp + "F";
+                                  var temp3 = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp3 + "F";
 
 
                                   var min = document.getElementById("low3");
-                                  var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
-                                  min.innerHTML = "Low: " + mintemp + "F";
+                                  var mintemp3 = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp3 + "F";
 
                                   var humidity3 = thisDay.hourly[0].humidity;
                                   var wind3 = thisDay.hourly[0].wind_speed;
@@ -192,24 +205,30 @@
                                     localStorage.setItem("windy", `${wind3} mph`);
                                     localStorage.setItem("humidy", `${humidity3}%`);
                                     localStorage.setItem("rainy", `${precip3}%`);
+                                    localStorage.setItem("day", `${day3}`);
+                                    localStorage.setItem("high", `${temp3}`);
+                                    localStorage.setItem("low", `${mintemp3} F`);
+                                    localStorage.setItem("pic", `${pic3.src}`);
+                                    localStorage.setItem("loca", `${winw}`);
                                   }
                                   //day 4
                                   var thisDay = getKey(3);
                                   var title = document.getElementById("day4");
                                   title.innerHTML = dayOfWeek;
+                                  var day4 = dayOfWeek;
 
-                                  var pic = document.getElementById("img4");
-                                  pic.src = thisDay.hourly[0].weather_icons;
+                                  var pic4 = document.getElementById("img4");
+                                  pic4.src = thisDay.hourly[0].weather_icons;
 
 
                                   var max = document.getElementById("high4");
-                                  var temp = Math.round(getFarenheitTemp(thisDay.maxtemp));
-                                  max.innerHTML = "High: " + temp + "F";
+                                  var temp4 = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp4 + "F";
 
 
                                   var min = document.getElementById("low4");
-                                  var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
-                                  min.innerHTML = "Low: " + mintemp + "F";
+                                  var mintemp4 = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp4 + "F";
 
                                   var humidity4 = thisDay.hourly[0].humidity;
                                   var wind4 = thisDay.hourly[0].wind_speed;
@@ -222,24 +241,30 @@
                                     localStorage.setItem("windy", `${wind4} mph`);
                                     localStorage.setItem("humidy", `${humidity4} %`);
                                     localStorage.setItem("rainy", `${precip4} %`);
+                                    localStorage.setItem("day", `${day4}`);
+                                    localStorage.setItem("high", `${temp4}`);
+                                    localStorage.setItem("low", `${mintemp4} F`);
+                                    localStorage.setItem("pic", `${pic4.src}`);
+                                    localStorage.setItem("loca", `${winw}`);
                                   }
                                   //day 5
                                   var thisDay = getKey(4);
                                   var title = document.getElementById("day5");
                                   title.innerHTML = dayOfWeek;
+                                  var day5 = dayOfWeek;
 
-                                  var pic = document.getElementById("img5");
-                                  pic.src = thisDay.hourly[0].weather_icons;
+                                  var pic5 = document.getElementById("img5");
+                                  pic5.src = thisDay.hourly[0].weather_icons;
 
 
                                   var max = document.getElementById("high5");
-                                  var temp = Math.round(getFarenheitTemp(thisDay.maxtemp));
-                                  max.innerHTML = "High: " + temp + "F";
+                                  var temp5 = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp5 + "F";
 
 
                                   var min = document.getElementById("low5");
-                                  var mintemp = Math.round(getFarenheitTemp(thisDay.mintemp));
-                                  min.innerHTML = "Low: " + mintemp + "F";
+                                  var mintemp5 = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp5 + "F";
 
                                   var humidity5 = thisDay.hourly[0].humidity;
                                   var wind5 = thisDay.hourly[0].wind_speed;
@@ -252,6 +277,11 @@
                                     localStorage.setItem("windy", `${wind5} mph`);
                                     localStorage.setItem("humidy", `${humidity5}%`);
                                     localStorage.setItem("rainy", `${precip5}%`);
+                                    localStorage.setItem("day", `${day5}`);
+                                    localStorage.setItem("high", `${temp5}`);
+                                    localStorage.setItem("low", `${mintemp5} F`);
+                                    localStorage.setItem("pic", `${pic5.src}`);
+                                    localStorage.setItem("loca", `${winw}`);
                                   }
 
 
