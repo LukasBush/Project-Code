@@ -1,0 +1,388 @@
+<!doctype html>
+  <html>
+    <head>
+      <script src= "./Scripts.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+      <title>Home Page</title>
+      <link href="homestyles.css" rel="stylesheet" type="text/css" />
+      <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+              }
+            else {
+                document.getElementById("myInput").value = "Lubbock";
+            }
+          }
+
+          function showPosition(position) {
+              console.log(position.coords.latitude);
+              console.log(position.coords.longitude);
+              document.getElementById("myInput").value = position.coords.latitude + "," + position.coords.longitude;
+              console.log(document.getElementById("myInput").value);
+
+
+          }
+      </script>
+      <script>
+      function loadIt(){
+          document.getElementById("myInput").value = "Lubbock";
+          getLocation();
+          setTimeout(() => { homeAPI(); }, 2000);
+
+
+        }
+      </script>
+    </head>
+    <body onload="loadIt()">
+      <header>
+        <div class="container-fluid">
+          <h1>
+            <img src="./Logo.png" alt="WTW Logo" />
+          </h1>
+
+        </div>
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-sm bg-success navbar-light">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="home.html">Home</a></li>
+              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="WTW.html">WTW</a></li>
+              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="comment.html">Comments</a></li>
+            </ul>
+          </nav>
+          <br>
+          <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script>
+          //helper functions
+          var dayOfWeek = "";
+          function formatDate(date, month, year)
+          {
+            month = (month.length < 2) ? ('0' + month) : month;
+            date = (date.length < 2)? ('0' + date) : date;
+            return [year,month,date].join('-');
+          }
+          function getDayofWeek(date, month, year){
+            var week_names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            dayOfWeek =  week_names[new Date([month,date,year].join('-')).getDay()];
+          }
+          function getFarenheitTemp(temp){
+            return (9*temp/5)+32;
+          }
+          function homeAPI() {
+            var apiKey = "5bc82451636190abd9d7afe6fe9b20b5";
+            var local = document.getElementById("myInput").value;
+            var url = `https://api.weatherstack.com/forecast?access_key=${apiKey}&query=${local}&forecast_days=6&hourly=1&interval=24`; //Place your weatherstack API Call Here - access_key to be used: 5bc82451636190abd9d7afe6fe9b20b5
+                $.ajax({url:url, dataType:"jsonp"}).then(function(data) {
+                console.log(data);//Review all of the data returned
+                console.log("Current Temp: " + data.current.temperature);//View Today's Temp
+                var current_time = data.location.localtime;//Retrieve the current timestamp
+                var winw = document.getElementById("myInput").value
+
+
+
+              /* Process the daily forecast for the next 5 days */
+              //helper function - to be used to get the key for each of the 5 days in the future when creating cards for forecasting weather
+              function getKey(i){
+                  var date =new Date();
+                  var d = date.getDate() + i;
+                  var m = date.getMonth() + 1;
+                  var y = date.getFullYear();
+                  var key_forecast = formatDate(d.toString(),m.toString(),y.toString()).toString();
+                  getDayofWeek(d,m,y);
+                  return data.forecast[key_forecast];
+              }
+
+              function imgKey(i){
+                var date =new Date();
+                var d = date.getDate() + i;
+                var m = date.getMonth() + 1;
+                var y = date.getFullYear();
+                var key_forecast = formatDate(d.toString(),m.toString(),y.toString()).toString();
+                getDayofWeek(d,m,y);
+                return data.current;
+              }
+                                  //day 1
+                                  var thisDay = getKey(0);
+                                  var title = document.getElementById("day1");
+                                  title.innerHTML = dayOfWeek;
+                                  var day1 = dayOfWeek;
+
+                                  var pic1 = document.getElementById("img1");
+                                  pic1.src = thisDay.hourly[0].weather_icons;
+
+
+                                  var max = document.getElementById("high1");
+                                  var temp1 = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp1 + "F";
+
+
+                                  var min = document.getElementById("low1");
+                                  var mintemp1 = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp1 + "F";
+
+                                  var humidity = thisDay.hourly[0].humidity;
+                                  var wind = thisDay.hourly[0].wind_speed;
+                                  var precip = thisDay.hourly[0].precip;
+
+                                  var nextPage = document.getElementById("btn1");
+                                  nextPage.innerHTML = "TO WTW";
+                                  nextPage.onclick = function(){
+                                    window.location = "WTW.html";
+                                    localStorage.setItem("windy", `${wind} mph`);
+                                    localStorage.setItem("humidy", `${humidity}%`);
+                                    localStorage.setItem("rainy", `${precip}%`);
+                                    localStorage.setItem("day", `${day1}`);
+                                    localStorage.setItem("high", `${temp1}`);
+                                    localStorage.setItem("low", `${mintemp1} F`);
+                                    localStorage.setItem("pic", `${pic1.src}`);
+                                    localStorage.setItem("loca", `${winw}`);
+                                  }
+                                  //day2
+                                  var thisDay = getKey(1);
+                                  var title = document.getElementById("day2");
+                                  title.innerHTML = dayOfWeek;
+                                  var day2 = dayOfWeek;
+
+                                  var pic2 = document.getElementById("img2");
+                                  pic2.src = thisDay.hourly[0].weather_icons;
+
+
+                                  var max = document.getElementById("high2");
+                                  var temp2 = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp2 + "F";
+
+
+                                  var min = document.getElementById("low2");
+                                  var mintemp2 = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp2 + "F";
+
+                                  var humidity2 = thisDay.hourly[0].humidity;
+                                  var wind2 = thisDay.hourly[0].wind_speed;
+                                  var precip2 = thisDay.hourly[0].precip;
+
+                                  var nextPage = document.getElementById("btn2");
+                                  nextPage.innerHTML = "TO WTW";
+                                  nextPage.onclick = function(){
+                                    window.location = "WTW.html";
+                                    localStorage.setItem("windy", `${wind2} mph`);
+                                    localStorage.setItem("humidy", `${humidity2}%`);
+                                    localStorage.setItem("rainy", `${precip2}%`);
+                                    localStorage.setItem("day", `${day2}`);
+                                    localStorage.setItem("high", `${temp2}`);
+                                    localStorage.setItem("low", `${mintemp2} F`);
+                                    localStorage.setItem("pic", `${pic2.src}`);
+                                    localStorage.setItem("loca", `${winw}`);
+                                  }
+                                  //day3
+                                  var thisDay = getKey(2);
+                                  var title = document.getElementById("day3");
+                                  title.innerHTML = dayOfWeek;
+                                  var day3 = dayOfWeek;
+
+                                  var pic3 = document.getElementById("img3");
+                                  pic3.src = thisDay.hourly[0].weather_icons;
+
+
+                                  var max = document.getElementById("high3");
+                                  var temp3 = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp3 + "F";
+
+
+                                  var min = document.getElementById("low3");
+                                  var mintemp3 = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp3 + "F";
+
+                                  var humidity3 = thisDay.hourly[0].humidity;
+                                  var wind3 = thisDay.hourly[0].wind_speed;
+                                  var precip3 = thisDay.hourly[0].precip;
+
+                                  var nextPage = document.getElementById("btn3");
+                                  nextPage.innerHTML = "TO WTW";
+                                  nextPage.onclick = function(){
+                                    window.location = "WTW.html";
+                                    localStorage.setItem("windy", `${wind3} mph`);
+                                    localStorage.setItem("humidy", `${humidity3}%`);
+                                    localStorage.setItem("rainy", `${precip3}%`);
+                                    localStorage.setItem("day", `${day3}`);
+                                    localStorage.setItem("high", `${temp3}`);
+                                    localStorage.setItem("low", `${mintemp3} F`);
+                                    localStorage.setItem("pic", `${pic3.src}`);
+                                    localStorage.setItem("loca", `${winw}`);
+                                  }
+                                  //day 4
+                                  var thisDay = getKey(3);
+                                  var title = document.getElementById("day4");
+                                  title.innerHTML = dayOfWeek;
+                                  var day4 = dayOfWeek;
+
+                                  var pic4 = document.getElementById("img4");
+                                  pic4.src = thisDay.hourly[0].weather_icons;
+
+
+                                  var max = document.getElementById("high4");
+                                  var temp4 = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp4 + "F";
+
+
+                                  var min = document.getElementById("low4");
+                                  var mintemp4 = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp4 + "F";
+
+                                  var humidity4 = thisDay.hourly[0].humidity;
+                                  var wind4 = thisDay.hourly[0].wind_speed;
+                                  var precip4 = thisDay.hourly[0].precip;
+
+                                  var nextPage = document.getElementById("btn4");
+                                  nextPage.innerHTML = "TO WTW";
+                                  nextPage.onclick = function(){
+                                    window.location = "WTW.html";
+                                    localStorage.setItem("windy", `${wind4} mph`);
+                                    localStorage.setItem("humidy", `${humidity4} %`);
+                                    localStorage.setItem("rainy", `${precip4} %`);
+                                    localStorage.setItem("day", `${day4}`);
+                                    localStorage.setItem("high", `${temp4}`);
+                                    localStorage.setItem("low", `${mintemp4} F`);
+                                    localStorage.setItem("pic", `${pic4.src}`);
+                                    localStorage.setItem("loca", `${winw}`);
+                                  }
+                                  //day 5
+                                  var thisDay = getKey(4);
+                                  var title = document.getElementById("day5");
+                                  title.innerHTML = dayOfWeek;
+                                  var day5 = dayOfWeek;
+
+                                  var pic5 = document.getElementById("img5");
+                                  pic5.src = thisDay.hourly[0].weather_icons;
+
+
+                                  var max = document.getElementById("high5");
+                                  var temp5 = Math.round(getFarenheitTemp(thisDay.maxtemp));
+                                  max.innerHTML = "High: " + temp5 + "F";
+
+
+                                  var min = document.getElementById("low5");
+                                  var mintemp5 = Math.round(getFarenheitTemp(thisDay.mintemp));
+                                  min.innerHTML = "Low: " + mintemp5 + "F";
+
+                                  var humidity5 = thisDay.hourly[0].humidity;
+                                  var wind5 = thisDay.hourly[0].wind_speed;
+                                  var precip5 = thisDay.hourly[0].precip;
+
+                                  var nextPage = document.getElementById("btn5");
+                                  nextPage.innerHTML = "TO WTW";
+                                  nextPage.onclick = function(){
+                                    window.location = "WTW.html";
+                                    localStorage.setItem("windy", `${wind5} mph`);
+                                    localStorage.setItem("humidy", `${humidity5}%`);
+                                    localStorage.setItem("rainy", `${precip5}%`);
+                                    localStorage.setItem("day", `${day5}`);
+                                    localStorage.setItem("high", `${temp5}`);
+                                    localStorage.setItem("low", `${mintemp5} F`);
+                                    localStorage.setItem("pic", `${pic5.src}`);
+                                    localStorage.setItem("loca", `${winw}`);
+                                  }
+
+
+
+
+                            })
+                          }
+                        </script>
+          <center><form autocomplete="off" position="relative" action="javascript:$(document).ready(homeAPI);">
+            <div class="autocomplete"  style="width:300px;">
+              <input id="myInput" type="text" name="myCity" placeholder="United States City">
+            </div>
+            <input type="submit">
+          </form>
+          <script>
+            var city_names = ["Aberdeen", "Abilene", "Akron", "Albany", "Albuquerque", "Alexandria", "Allentown", "Amarillo", "Anaheim", "Anchorage", "Ann Arbor", "Antioch", "Apple Valley", "Appleton", "Arlington", "Arvada", "Asheville", "Athens", "Atlanta", "Atlantic City", "Augusta", "Aurora", "Austin", "Bakersfield", "Baltimore", "Barnstable", "Baton Rouge", "Beaumont", "Bel Air", "Bellevue", "Berkeley", "Bethlehem", "Billings", "Birmingham", "Bloomington", "Boise", "Boise City", "Bonita Springs", "Boston", "Boulder", "Bradenton", "Bremerton", "Bridgeport", "Brighton", "Brownsville", "Bryan", "Buffalo", "Burbank", "Burlington", "Cambridge", "Canton", "Cape Coral", "Carrollton", "Cary", "Cathedral City", "Cedar Rapids", "Champaign", "Chandler", "Charleston", "Charlotte", "Chattanooga", "Chesapeake", "Chicago", "Chula Vista", "Cincinnati", "Clarke County", "Clarksville", "Clearwater", "Cleveland", "College Station", "Colorado Springs", "Columbia", "Columbus", "Concord", "Coral Springs", "Corona", "Corpus Christi", "Costa Mesa", "Dallas", "Daly City", "Danbury", "Davenport", "Davidson County", "Dayton", "Daytona Beach", "Deltona", "Denton", "Denver", "Des Moines", "Detroit", "Downey", "Duluth", "Durham", "El Monte", "El Paso", "Elizabeth", "Elk Grove", "Elkhart", "Erie", "Escondido", "Eugene", "Evansville", "Fairfield", "Fargo", "Fayetteville", "Fitchburg", "Flint", "Fontana", "Fort Collins", "Fort Lauderdale", "Fort Smith", "Fort Walton Beach", "Fort Wayne", "Fort Worth", "Frederick", "Fremont", "Fresno", "Fullerton", "Gainesville", "Garden Grove", "Garland", "Gastonia", "Gilbert", "Glendale", "Grand Prairie", "Grand Rapids", "Grayslake", "Green Bay", "GreenBay", "Greensboro", "Greenville", "Gulfport-Biloxi", "Hagerstown", "Hampton", "Harlingen", "Harrisburg", "Hartford", "Havre de Grace", "Hayward", "Hemet", "Henderson", "Hesperia", "Hialeah", "Hickory", "High Point", "Hollywood", "Honolulu", "Houma", "Houston", "Howell", "Huntington", "Huntington Beach", "Huntsville", "Independence", "Indianapolis", "Inglewood", "Irvine", "Irving", "Jackson", "Jacksonville", "Jefferson", "Jersey City", "Johnson City", "Joliet", "Kailua", "Kalamazoo", "Kaneohe", "Kansas City", "Kennewick", "Kenosha", "Killeen", "Kissimmee", "Knoxville", "Lacey", "Lafayette", "Lake Charles", "Lakeland", "Lakewood", "Lancaster", "Lansing", "Laredo", "Las Cruces", "Las Vegas", "Layton", "Leominster", "Lewisville", "Lexington", "Lincoln", "Little Rock", "Long Beach", "Lorain", "Los Angeles", "Louisville", "Lowell", "Lubbock", "Macon", "Madison", "Manchester", "Marina", "Marysville", "McAllen", "McHenry", "Medford", "Melbourne", "Memphis", "Merced", "Mesa", "Mesquite", "Miami", "Milwaukee", "Minneapolis", "Miramar", "Mission Viejo", "Mobile", "Modesto", "Monroe", "Monterey", "Montgomery", "Moreno Valley", "Murfreesboro", "Murrieta", "Muskegon", "Myrtle Beach", "Naperville", "Naples", "Nashua", "Nashville", "New Bedford", "New Haven", "New London", "New Orleans", "New York", "New York City", "Newark", "Newburgh", "Newport News", "Norfolk", "Normal", "Norman", "North Charleston", "North Las Vegas", "North Port", "Norwalk", "Norwich", "Oakland", "Ocala", "Oceanside", "Odessa", "Ogden", "Oklahoma City", "Olathe", "Olympia", "Omaha", "Ontario", "Orange", "Orem", "Orlando", "Overland Park", "Oxnard", "Palm Bay", "Palm Springs", "Palmdale", "Panama City", "Pasadena", "Paterson", "Pembroke Pines", "Pensacola", "Peoria", "Philadelphia", "Phoenix", "Pittsburgh", "Plano", "Pomona", "Pompano Beach", "Port Arthur", "Port Orange", "Port Saint Lucie", "Port St. Lucie", "Portland", "Portsmouth", "Poughkeepsie", "Providence", "Provo", "Pueblo", "Punta Gorda", "Racine", "Raleigh", "Rancho Cucamonga", "Reading", "Redding", "Reno", "Richland", "Richmond", "Richmond County", "Riverside", "Roanoke", "Rochester", "Rockford", "Roseville", "Round Lake Beach", "Sacramento", "Saginaw", "Saint Louis", "Saint Paul", "Saint Petersburg", "Salem", "Salinas", "Salt Lake City", "San Antonio", "San Bernardino", "San Buenaventura", "San Diego", "San Francisco", "San Jose", "Santa Ana", "Santa Barbara", "Santa Clara", "Santa Clarita", "Santa Cruz", "Santa Maria", "Santa Rosa", "Sarasota", "Savannah", "Scottsdale", "Scranton", "Seaside", "Seattle", "Sebastian", "Shreveport", "Simi Valley", "Sioux City", "Sioux Falls", "South Bend", "South Lyon", "Spartanburg", "Spokane", "Springdale", "Springfield", "St. Louis", "St. Paul", "St. Petersburg", "Stamford", "Sterling Heights", "Stockton", "Sunnyvale", "Syracuse", "Tacoma", "Tallahassee", "Tampa", "Temecula", "Tempe", "Thornton", "Thousand Oaks", "Toledo", "Topeka", "Torrance", "Trenton", "Tucson", "Tulsa", "Tuscaloosa", "Tyler", "Utica", "Vallejo", "Vancouver", "Vero Beach", "Victorville", "Virginia Beach", "Visalia", "Waco", "Warren", "Washington", "Waterbury", "Waterloo", "West Covina", "West Valley City", "Westminster", "Wichita", "Wilmington", "Winston", "Winter Haven", "Worcester", "Yakima", "Yonkers", "York", "Youngstown"];
+            autocomplete(document.getElementById("myInput"), city_names);
+          </script>
+        </div>
+      </header>
+      <br>
+      <div class="container">
+      <div class="card-deck" id="5_day_forecast">
+        <div class="row">
+          <div class="col">
+            <div id="forecast" class="card" style="width:170px">
+              <center><div class="card-body">
+                <h5 id="day1" class="card-title">Day</h5>
+                <img id="img1" src="" alt="weather image">
+                <br />
+                <p id="high1" class="card-text">High:</p>
+                <p id="low1" class="card-text">Low:</p>
+                <br />
+                <a id="btn1" href="WTW.html" class="btn btn-primary">To WTW</a>
+              </div></center>
+            </div>
+          </div>
+          <div class="col">
+            <div id="forecast" class="card" style="width:170px">
+              <center><div class="card-body">
+                <h5 id="day2" class="card-title">Day</h5>
+                <img id="img2" src="" alt="weather image">
+                <br />
+                <p id="high2" class="card-text">High:</p>
+                <p id="low2" class="card-text">Low:</p>
+                <br />
+                <a id="btn2" href="WTW.html" class="btn btn-primary">To WTW</a>
+              </div></center>
+            </div>
+          </div>
+          <div class="col">
+            <div id="forecast" class="card" style="width:170px">
+              <center><div class="card-body">
+                <h5 id="day3" class="card-title">Day</h5>
+                <img id="img3" src="" alt="weather image">
+                <br />
+                <p id="high3" class="card-text">High:</p>
+                <p id="low3" class="card-text">Low:</p>
+                <br />
+                <a id="btn3" href="WTW.html" class="btn btn-primary">To WTW</a>
+              </div></center>
+            </div>
+          </div>
+          <div class="col">
+            <div id="forecast" class="card" style="width:170px">
+              <center><div class="card-body">
+                <h5 id="day4" class="card-title">Day</h5>
+                <img id="img4" src="" alt="weather image">
+                <br />
+                <p id="high4" class="card-text">High:</p>
+                <p id="low4" class="card-text">Low:</p>
+                <br />
+                <a id="btn4" href="WTW.html" class="btn btn-primary">To WTW</a>
+              </div></center>
+            </div>
+          </div>
+          <div class="col">
+            <div id="forecast" class="card" style="width:170px">
+              <center><div class="card-body">
+                <h5 id="day5" class="card-title">Day</h5>
+                <img id="img5" src="" alt="weather image">
+                <br />
+                <p id="high5" class="card-text">High:</p>
+                <p id="low5" class="card-text">Low:</p>
+                <br />
+                <a id="btn5" href="WTW.html" class="btn btn-primary">To WTW</a>
+              </div></center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <section>
+        <br>
+
+
+
+        </div>
+      </section>
+
+
+
+    </body>
+  </html>
