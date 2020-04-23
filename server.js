@@ -9,7 +9,7 @@ var pgp = require('pg-promise')();
 const dbConfig = {
 	host: 'localhost',
 	port: '5432',
-	database: 'website_comments',
+	database: 'webpage_comments',
 	user: 'postgres',
 	password: 'Magoocool1998!'
 }
@@ -40,8 +40,8 @@ app.get('/comments', function(req, res) {
 	});
 });
 
-/*
-app.post('/comment', function(req, res) {
+
+app.post('/comments/post_comment', function(req, res) {
 	var place = req.body.location;
 	var	weather = req.body.descript;
 	var fName = req.body.firstName;
@@ -56,8 +56,7 @@ app.post('/comment', function(req, res) {
 		]);
 	})
 	.then(info => {
-		res.render('comment', {
-			my_title: "Comment Page"
+		res.render('pages/comments', {
 		})
 	})
 	.catch(err => {
@@ -65,6 +64,6 @@ app.post('/comment', function(req, res) {
 		response.render('comments')
 	})
 });
-*/
+
 app.listen(3000);
 console.log('3000 is the magic port');

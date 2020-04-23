@@ -4,7 +4,6 @@
       <script src= "./Scripts.js"></script>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
       <title>Home Page</title>
-      <link href="homestyles.css" rel="stylesheet" type="text/css" />
       <script>
         function getLocation() {
             if (navigator.geolocation) {
@@ -45,9 +44,9 @@
         <div class="container-fluid">
           <nav class="navbar navbar-expand-sm bg-success navbar-light">
             <ul class="navbar-nav">
-              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="home.html">Home</a></li>
-              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="WTW.html">WTW</a></li>
-              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="comment.html">Comments</a></li>
+              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="/">Home</a></li>
+              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="WTW">WTW</a></li>
+              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="comments">Comments</a></li>
             </ul>
           </nav>
           <br>
@@ -129,7 +128,7 @@
                                   var nextPage = document.getElementById("btn1");
                                   nextPage.innerHTML = "TO WTW";
                                   nextPage.onclick = function(){
-                                    window.location = "WTW.html";
+                                    window.location = "WTW.ejs";
                                     localStorage.setItem("windy", `${wind} mph`);
                                     localStorage.setItem("humidy", `${humidity}%`);
                                     localStorage.setItem("rainy", `${precip}%`);
@@ -165,7 +164,7 @@
                                   var nextPage = document.getElementById("btn2");
                                   nextPage.innerHTML = "TO WTW";
                                   nextPage.onclick = function(){
-                                    window.location = "WTW.html";
+                                    window.location = "WTW.ejs";
                                     localStorage.setItem("windy", `${wind2} mph`);
                                     localStorage.setItem("humidy", `${humidity2}%`);
                                     localStorage.setItem("rainy", `${precip2}%`);
@@ -201,7 +200,7 @@
                                   var nextPage = document.getElementById("btn3");
                                   nextPage.innerHTML = "TO WTW";
                                   nextPage.onclick = function(){
-                                    window.location = "WTW.html";
+                                    window.location = "WTW.ejs";
                                     localStorage.setItem("windy", `${wind3} mph`);
                                     localStorage.setItem("humidy", `${humidity3}%`);
                                     localStorage.setItem("rainy", `${precip3}%`);
@@ -237,7 +236,7 @@
                                   var nextPage = document.getElementById("btn4");
                                   nextPage.innerHTML = "TO WTW";
                                   nextPage.onclick = function(){
-                                    window.location = "WTW.html";
+                                    window.location = "WTW.ejs";
                                     localStorage.setItem("windy", `${wind4} mph`);
                                     localStorage.setItem("humidy", `${humidity4} %`);
                                     localStorage.setItem("rainy", `${precip4} %`);
@@ -273,7 +272,7 @@
                                   var nextPage = document.getElementById("btn5");
                                   nextPage.innerHTML = "TO WTW";
                                   nextPage.onclick = function(){
-                                    window.location = "WTW.html";
+                                    window.location = "WTW.ejs";
                                     localStorage.setItem("windy", `${wind5} mph`);
                                     localStorage.setItem("humidy", `${humidity5}%`);
                                     localStorage.setItem("rainy", `${precip5}%`);
@@ -315,7 +314,7 @@
                 <p id="high1" class="card-text">High:</p>
                 <p id="low1" class="card-text">Low:</p>
                 <br />
-                <a id="btn1" href="WTW.html" class="btn btn-primary">To WTW</a>
+                <a id="btn1" href="WTW" class="btn btn-primary">To WTW</a>
               </div></center>
             </div>
           </div>
@@ -328,7 +327,7 @@
                 <p id="high2" class="card-text">High:</p>
                 <p id="low2" class="card-text">Low:</p>
                 <br />
-                <a id="btn2" href="WTW.html" class="btn btn-primary">To WTW</a>
+                <a id="btn2" href="WTW" class="btn btn-primary">To WTW</a>
               </div></center>
             </div>
           </div>
@@ -341,7 +340,7 @@
                 <p id="high3" class="card-text">High:</p>
                 <p id="low3" class="card-text">Low:</p>
                 <br />
-                <a id="btn3" href="WTW.html" class="btn btn-primary">To WTW</a>
+                <a id="btn3" href="WTW" class="btn btn-primary">To WTW</a>
               </div></center>
             </div>
           </div>
@@ -354,7 +353,7 @@
                 <p id="high4" class="card-text">High:</p>
                 <p id="low4" class="card-text">Low:</p>
                 <br />
-                <a id="btn4" href="WTW.html" class="btn btn-primary">To WTW</a>
+                <a id="btn4" href="WTW" class="btn btn-primary">To WTW</a>
               </div></center>
             </div>
           </div>
@@ -367,7 +366,7 @@
                 <p id="high5" class="card-text">High:</p>
                 <p id="low5" class="card-text">Low:</p>
                 <br />
-                <a id="btn5" href="WTW.html" class="btn btn-primary">To WTW</a>
+                <a id="btn5" href="WTW" class="btn btn-primary">To WTW</a>
               </div></center>
             </div>
           </div>

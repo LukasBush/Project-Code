@@ -4,7 +4,6 @@
       <script src= "./Scripts.js"></script>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
       <title>WTW</title>
-      <link href="homestyles.css" rel="stylesheet" type="text/css" />
       <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
@@ -16,6 +15,10 @@
             document.getElementById("humid").innerHTML = data.current.humidity + "%";
             document.getElementById("wind").innerHTML = data.current.wind_speed + "mph";
             document.getElementById("precip").innerHTML = data.current.precip + "%";
+            document.getElementById("picture").src = data.current.weather_icons; 
+            document.getElementById("high").innerHTML = (data.current.temperature * (9/5)) + 32 + " F"; 
+            document.getElementById("low").innerHTML = (data.current.feelslike * (9/5)) + 32 + " F" ; 
+            document.getElementById("low_title").innerHTML = "Feels Like";  
             var n =  new Date();
             var y = n.getFullYear();
             var m = n.getMonth() + 1;
@@ -139,9 +142,9 @@
         <div class="container-fluid">
           <nav class="navbar navbar-expand-sm bg-success navbar-light">
             <ul class="navbar-nav">
-              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="home.html">Home</a></li>
-              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="WTW.html">WTW</a></li>
-              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="comment.html">Comments</a></li>
+              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="/">Home</a></li>
+              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="WTW">WTW</a></li>
+              <li class="nav-item"><a class="navbar-brand mb-0 h1" href="comments">Comments</a></li>
             </ul>
           </nav>
           <br>
@@ -178,7 +181,7 @@
                 </div>
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Low</h5>
+                    <h5 id = "low_title" class="card-title">Low</h5>
                     <p id="low" class="card-text">---</p>
                   </div>
                 </div>
