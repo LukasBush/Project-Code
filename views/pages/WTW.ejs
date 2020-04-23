@@ -1,5 +1,52 @@
 <!doctype html>
   <html>
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font: 16px Arial;
+  }
+
+  /*the container must be positioned relative:*/
+  .autocomplete {
+    position: relative;
+    display: inline-block;
+  }
+
+
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+    
+  }
+
+  /*when hovering an item:*/
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9;
+  }
+
+  /*when navigating through the items using the arrow keys:*/
+  .autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }
+  </style>
     <head>
       <script src= "../../scripts.js"></script>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -28,7 +75,8 @@
             document.getElementById("picture").src = data.current.weather_icons; 
             document.getElementById("high").innerHTML = (data.current.temperature * (9/5)) + 32 + " F"; 
             document.getElementById("low").innerHTML = (data.current.feelslike * (9/5)) + 32 + " F" ; 
-            document.getElementById("low_title").innerHTML = "Feels Like";  
+            document.getElementById("low_title").innerHTML = "Feels Like";
+            document.getElementById("high_title").innerHTML = "Temperature";  
             var n =  new Date();
             var y = n.getFullYear();
             var m = n.getMonth() + 1;
@@ -189,7 +237,7 @@
                 </div>
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">High</h5>
+                    <h5 id = "high_title" class="card-title">High</h5>
                     <p id="high" class="card-text">---</p>
                   </div>
                 </div>
@@ -240,21 +288,17 @@
             <div class="col-4">
               <br>
               <div style="border:1px solid Black;height:750px;line-height:3em;overflow:auto;padding:5px;" id = "comment_box">
-                <form action = "/WTW/comments" method = "get">
-                  <%if(data) {
-                    var cards = '';
-                    data.forEach(function(item){
-                    cards += '<div id = "card" class = "card"> <div class = "card-header">' + item.firstname + ' ' + item.lastname + ' (' + item.location + ')' + '</div><div id = "body" class = "card-body"> <h5 id = "header" class = "card-title">' + item.firstname + '</h5> <p id = "text" class = "card-text">'+ item.comment +'</p> </div> </div>';
-                    }); %>
-                    <%- cards %>
-                  <% } %>
+                <%if(data) {
+                  var cards = '';
+                  data.forEach(function(item){
+                  cards += '<div id = "card" class = "card"> <div class = "card-header">' + item.firstname + ' ' + item.lastname + ' (' + item.location + ')' + '</div><div id = "body" class = "card-body"> <h5 id = "header" class = "card-title">' + item.descript + '</h5> <p id = "text" class = "card-text">'+ item.comment +'</p> </div> </div>';
+                  }); %>
+                  <%- cards %>
+                <% } %>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <script>
-        console.log(document.getElementById("myInput").value);
-      </script>
     </body>
   </html>

@@ -25,25 +25,6 @@ app.get('/', function(req, res) {
 });
 
 app.get('/WTW', function(req, res) {
-	var location = req.body.myInput;
-	var comments = "SELECT * FROM comments WHERE location = '" + location +"';";
-	//var query = 'SELECT * FROM comments;';
-	db.any(comments)
-	.then(function (rows){
-			res.render('pages/WTW',{
-				data: rows
-			})
-		})
-		.catch(function (err) {
-			console.log('error', err);
-			response.render('pages/WTW', {
-			})
-		});
-});
-
-/*app.get('/WTW/comments', function(req, res){
-	//var location = req.query.
-	//var comments = "SELECT * FROM comments WHERE location = '" + location +"';";
 	var query = 'SELECT * FROM comments;';
 	db.any(query)
 	.then(function (rows){
@@ -56,7 +37,8 @@ app.get('/WTW', function(req, res) {
 			response.render('pages/WTW', {
 			})
 		});
-});*/
+});
+
 
 app.get('/comments', function(req, res) {
 	res.render('pages/comment',{
