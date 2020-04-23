@@ -1,75 +1,22 @@
 <!doctype html>
   <html>
-  <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font: 16px Arial;
-}
-
-/*the container must be positioned relative:*/
-.autocomplete {
-  position: relative;
-  display: inline-block;
-}
-
-input {
-  border: 1px solid transparent;
-  background-color: #f1f1f1;
-  padding: 10px;
-  font-size: 16px;
-}
-
-input[type=text] {
-  background-color: #f1f1f1;
-  width: 100%;
-}
-
-input[type=submit] {
-  background-color: DodgerBlue;
-  color: #fff;
-  cursor: pointer;
-}
-
-.autocomplete-items {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  border-bottom: none;
-  border-top: none;
-  z-index: 99;
-  /*position the autocomplete items to be the same width as the container:*/
-  top: 100%;
-  left: 0;
-  right: 0;
-}
-
-.autocomplete-items div {
-  padding: 10px;
-  cursor: pointer;
-  background-color: #fff;
-  border-bottom: 1px solid #d4d4d4;
-}
-
-/*when hovering an item:*/
-.autocomplete-items div:hover {
-  background-color: #e9e9e9;
-}
-
-/*when navigating through the items using the arrow keys:*/
-.autocomplete-active {
-  background-color: DodgerBlue !important;
-  color: #ffffff;
-}
-</style>
     <head>
-      <script src= "./Scripts.js"></script>
+      <script src= "../../scripts.js"></script>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
       <title>WTW</title>
       <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+      <script>
+        function test(){
+          console.log(document.getElementById("myInput").value);
+          for(var i = 0; i < 5; i++)
+          {
+            var card = '<div id = "card" class = "card"><div id = "body" class = "card-body"></div> </div>'
+            document.getElementById("comment_box").innerHTML += card;
+          }
+        }
+      </script>>
       <script>
       function wtwAPI() {
         var local = document.getElementById("myInput").value;
@@ -132,6 +79,8 @@ input[type=submit] {
                 socks.src = "";
               }
 
+              //document.getElementById("comment_box").innerHTML = 'WTWapi';
+
           })
         }
 
@@ -191,6 +140,8 @@ input[type=submit] {
           socks.src = "";
         }
 
+        //document.getElementById("comment_box").innerHTML = 'load';
+
       }
       </script>
     </head>
@@ -212,7 +163,7 @@ input[type=submit] {
           </nav>
           <br>
 
-          <center><form autocomplete="off" action="javascript:$(document).ready(wtwAPI);">
+          <center><form autocomplete="off" action="javascript:$(document).ready(wtwAPI());">
             <div class="autocomplete" style="width:300px;">
               <input id="myInput" type="text" name="myCity" placeholder="United States City">
             </div>
@@ -288,60 +239,22 @@ input[type=submit] {
             </div>
             <div class="col-4">
               <br>
-              <div style="border:1px solid Black;height:450px;line-height:3em;overflow:auto;padding:5px;">
-                <div class="card">
-                  <div class="card-header">Josh</div>
-                  <div class="card-body">
-                    <h5 class="card-title">Description of Weather</h5>
-                    <p class="card-text">Even though it said to wear this, I wore this and was completely fine. Stupid website 0/10</p>
-                  </div>
-                </div>
-                <div class = "card">
-                  <div class = "card-body">
-                    <h5 class = "card-title">testing</h5>
-                  </div>
-                </div>
-                <div class = "card">
-                  <div class = "card-body">
-                    <h5 class = "card-title">testing</h5>
-                  </div>
-                </div>
-                <div class = "card">
-                  <div class = "card-body">
-                    <h5 class = "card-title">testing</h5>
-                  </div>
-                </div>
-                <div class = "card">
-                  <div class = "card-body">
-                    <h5 class = "card-title">testing</h5>
-                  </div>
-                </div>
-                <div class = "card">
-                  <div class = "card-body">
-                    <h5 class = "card-title">testing</h5>
-                  </div>
-                </div>
-                <div class = "card">
-                  <div class = "card-body">
-                    <h5 class = "card-title">testing</h5>
-                  </div>
-                </div>
-                <div class = "card">
-                  <div class = "card-body">
-                    <h5 class = "card-title">testing</h5>
-                  </div>
-                </div>
-                <div class = "card">
-                  <div class = "card-body">
-                    <h5 class = "card-title">testing</h5>
-                  </div>
-                </div>
+              <div style="border:1px solid Black;height:750px;line-height:3em;overflow:auto;padding:5px;" id = "comment_box">
+                <form action = "/WTW/comments" method = "get">
+                  <%if(data) {
+                    var cards = '';
+                    data.forEach(function(item){
+                    cards += '<div id = "card" class = "card"> <div class = "card-header">' + item.firstname + ' ' + item.lastname + ' (' + item.location + ')' + '</div><div id = "body" class = "card-body"> <h5 id = "header" class = "card-title">' + item.firstname + '</h5> <p id = "text" class = "card-text">'+ item.comment +'</p> </div> </div>';
+                    }); %>
+                    <%- cards %>
+                  <% } %>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-
+      <script>
+        console.log(document.getElementById("myInput").value);
+      </script>
     </body>
   </html>
